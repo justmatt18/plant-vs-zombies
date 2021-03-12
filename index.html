@@ -69,7 +69,7 @@
     </div>
     <div id="explosion"></div>
     <audio autoplay hidden loop>
-      <source src="sounds/bg-music.mp3" type="audio/ogg" />
+      <source src="bg-music.mp3" type="audio/ogg" />
       Your browser does not support the audio element.
     </audio>
     <script>
@@ -149,7 +149,7 @@
         moveBullets();
         drawBullets();
         drawPlants();
-      });
+      }, 1);
       setInterval(() => {
         if (plantAnimation < 7) {
           plantAnimation += 1;
@@ -175,7 +175,7 @@
             });
           }
         }
-        playSound("sounds/puff.mp3");
+        playSound("puff.mp3");
       }
 
       function moveZombies() {
@@ -204,10 +204,11 @@
                   bullets[i].y == zombies[j].y &&
                   zombies[j].health >= 10
                 ) {
+                  playSound("puff.mp3");
                   zombies[j].health -= 10;
 
                   if (zombies[j].health <= 0) {
-                    playSound("sounds/die.mp3");
+                    playSound("die.mp3");
                     zombies[j].x = 1050;
                     zombies[j].health = zombies[j].type * 20;
                   }
